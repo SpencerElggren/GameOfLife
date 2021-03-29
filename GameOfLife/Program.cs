@@ -68,7 +68,13 @@ namespace GameOfLife
                     var currentCell = currentGrid[row, column];
 
                     aliveNeighbors -= currentCell == Status.Alive ? 1 : 0;
-                    if (currentCell == Status.Alive && aliveNeighbors > 3)
+                    
+                    if (currentCell == Status.Alive && aliveNeighbors < 2)
+                    {
+                        nextGen[row, column] = Status.Dead;
+                    }
+                    
+                    else if (currentCell == Status.Alive && aliveNeighbors > 3)
                     {
                         nextGen[row, column] = Status.Dead;
                     }
